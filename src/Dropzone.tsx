@@ -414,7 +414,7 @@ class Dropzone extends React.Component<IDropzoneProps, { active: boolean; dragge
     await this.generatePreview(fileWithMeta)
 
     if (validate) {
-      const error = validate(fileWithMeta)
+      const error = await validate(fileWithMeta)
       if (error) {
         fileWithMeta.meta.status = 'error_validation'
         fileWithMeta.meta.validationError = error // usually a string, but doesn't have to be
