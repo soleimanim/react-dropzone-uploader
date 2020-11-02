@@ -12,21 +12,27 @@ function createConfig(entry, output) {
     entry,
     output,
     optimization: {
-      minimizer: [new UglifyJSPlugin()],
+      // minimizer: [new UglifyJSPlugin()],
     },
     module: {
       rules: [
         {
           test: /\.js?$/,
           exclude: /node_modules/,
-          use: 'babel-loader',
+          use: 'babel-loader'
         },
         {
           test: /\.css$/,
           loaders: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+          test: /\.svg$/,
+          use: {
+              loader: 'svg-url-loader'
+          }
+        },
+        {
+          test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,
           exclude: /node_modules/,
           loader: 'url-loader?limit=10000',
         },
